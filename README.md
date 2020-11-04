@@ -11,7 +11,12 @@ Tech:
 2. PostgreSQL 
 3. 
 
+API:
+1. DOHMH Farmers Markets/ SODA API  (for Greenmarkets in NYC)
+
 Gems:
+1. byebug
+2. dotenv
 
 Models:
 1. User
