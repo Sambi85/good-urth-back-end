@@ -15,8 +15,10 @@ API:
 1. DOHMH Farmers Markets/ SODA API  (for Greenmarkets in NYC)
 
 Gems:
-1. byebug
-2. dotenv
+- pry
+- byebug
+- dotenv
+- httparty (backend fetch requests) 
 
 Models:
 1. User

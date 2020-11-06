@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_002429) do
+ActiveRecord::Schema.define(version: 2020_11_06_021713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "farmers", force: :cascade do |t|
-    t.integer "tent_id"
     t.string "username"
     t.string "password_digest"
     t.string "bio"
@@ -29,6 +28,7 @@ ActiveRecord::Schema.define(version: 2020_11_04_002429) do
     t.boolean "is_open"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "market_id"
   end
 
   create_table "item_orders", force: :cascade do |t|
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 2020_11_04_002429) do
 
   create_table "items", force: :cascade do |t|
     t.integer "farmer_id"
-    t.integer "order_id"
     t.string "name"
     t.float "price"
     t.string "purchase_unit"
@@ -49,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_11_04_002429) do
     t.boolean "item_pulled"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "url"
   end
 
   create_table "markets", force: :cascade do |t|
@@ -57,14 +57,18 @@ ActiveRecord::Schema.define(version: 2020_11_04_002429) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "borough"
-    t.float "latitude"
-    t.float "longitude"
-    t.string "days_of_operation"
+    t.string "latitude"
+    t.string "longitude"
     t.string "hours_of_operation"
     t.string "season_dates"
-    t.boolean "accepts_ebt"
-    t.boolean "open_year_round"
-    t.point "location"
+    t.string "location"
+    t.string "contact"
+    t.string "url"
+    t.string "fmnp"
+    t.string "snap_status"
+    t.string "zip"
+    t.string "operation_months_code"
+    t.string "phone"
   end
 
   create_table "messages", force: :cascade do |t|

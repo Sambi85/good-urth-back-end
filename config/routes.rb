@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :reviews
   resources :item_orders
   resources :items
-  resources :tents
   resources :markets
   resources :farmers
   resources :users
