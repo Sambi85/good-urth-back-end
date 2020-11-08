@@ -1,12 +1,16 @@
 require 'httparty'
+require 'dotenv'
 # require 'pry'
+Dotenv.load
 
 class Market < ApplicationRecord
 
-    has_many :farmers
+    has_many :schedules
+    has_many :farmers, through: :schedules
     
     def self.market_grabber(string)
-        response = HTTParty.get("https://data.ny.gov/resource/xjya-f8ng.json?county=#{string}")
+        response = HTTParty.get("https://data.ny.gov/resource/xjya-f8ng.json?$$app_token=#{ENV['NYC_API_KEY']}&&county=#{string}") 
+    
         
             response.map do |resp|
                 Market.create(

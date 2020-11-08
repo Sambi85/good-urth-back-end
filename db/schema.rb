@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_06_021713) do
+ActiveRecord::Schema.define(version: 2020_11_08_223608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 2020_11_06_021713) do
     t.boolean "is_open"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "market_id"
   end
 
   create_table "item_orders", force: :cascade do |t|
@@ -88,6 +87,7 @@ ActiveRecord::Schema.define(version: 2020_11_06_021713) do
     t.float "total"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "pick_up"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -101,12 +101,12 @@ ActiveRecord::Schema.define(version: 2020_11_06_021713) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "tents", force: :cascade do |t|
+  create_table "schedules", force: :cascade do |t|
     t.integer "market_id"
-    t.string "name"
-    t.string "description"
+    t.integer "farmer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "days_of_the_week"
   end
 
   create_table "users", force: :cascade do |t|

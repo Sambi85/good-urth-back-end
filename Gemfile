@@ -30,6 +30,7 @@ gem 'active_model_serializers'
 gem 'httparty'
 gem 'pry'
 gem 'faker'
+gem 'pexels'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
