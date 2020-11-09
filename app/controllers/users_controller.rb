@@ -14,6 +14,7 @@ class UsersController < ApplicationController
         user = User.create(user_name)
         render :json => user
     end
+    
 
     # def profile
     #     render json: { user: UserSerializer.new(current_user) }, status: accepted
