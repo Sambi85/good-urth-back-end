@@ -58,6 +58,7 @@ days_of_the_week = ["monday","tuesday","wednesday","thursday","friday","saturday
 end
 
 
+
 ### Items
 client.photos.search('tomatoes', per_page: 10).photos.each do |photo|
     tomatoes = Item.create!(
