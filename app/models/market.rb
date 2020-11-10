@@ -10,8 +10,7 @@ class Market < ApplicationRecord
     
     def self.market_grabber(string)
         response = HTTParty.get("https://data.ny.gov/resource/xjya-f8ng.json?$$app_token=#{ENV['NYC_API_KEY']}&&county=#{string}") 
-    
-        
+             
             response.map do |resp|
                 Market.create(
                     borough: resp['county'],

@@ -12,12 +12,13 @@ class MessagesController < ApplicationController
 
     def create
         message = Message.create(message_params)
-        render :json => message
+        render :json => message, serializer: MessageSerializer
     end
 
     def update 
         message = Message.find(params[:id])
         message.update(message_params)
+        render :json => message, serializer: MessageSerializer
     end
 
     def destroy

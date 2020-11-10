@@ -11,13 +11,13 @@ class MarketsController < ApplicationController
 
     def create
         market = Market.create(market_params)
-        render => :json => market
+        render :json => market, serializer: MarketSerializer
     end
 
     def update
         market = Market.find(params[:id])
         market.update(market_params)
-        render :json => market, serializer: MarketSerializer
+        render :json => market, serializer: MarketSerializer 
     end
 
     def destroy

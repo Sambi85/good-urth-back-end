@@ -26,7 +26,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # gem 'rack-cors'
 gem 'dotenv'
 gem 'dotenv-rails'
-gem 'active_model_serializers'
+gem 'active_model_serializers', '~> 0.10.10'
 gem 'httparty'
 gem 'pry'
 gem 'faker'

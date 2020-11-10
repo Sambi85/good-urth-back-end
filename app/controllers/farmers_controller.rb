@@ -12,13 +12,13 @@ class FarmersController < ApplicationController
 
     def create
         farmer = Farmer.find(farmer_params)
-        render :json => farmer
+        render :json => farmer, serialzer: FarmerSerializer
     end
 
     def update
         farmer = Farmer.create(farmer_params)
         farmer.update(farmer_params)
-        render :json => farmer
+        render :json => farmer, serialzer: FarmerSerializer
     end
 
     def destroy

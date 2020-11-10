@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
 
     def create
         order = Order.create(order_params)
-        render :json => order
+        render :json => order, serializer: OrderSerializer
     end
 
     def update
