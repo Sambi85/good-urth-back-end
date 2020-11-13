@@ -19,7 +19,7 @@ class Market < ApplicationRecord
                     address: resp['address_line_1'],
                     zip: resp['zip'],
                     contact: resp['contact'],
-                    phone: resp['phone'],
+                    phone_number: resp['phone'],
                     url: resp['market_link'] ? resp['market_link']['url'] : nil,
                     hours_of_operation: resp['operation_hours'],
                     season_dates: resp['operation_season'],

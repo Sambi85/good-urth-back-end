@@ -142,6 +142,17 @@ client.photos.search('Pies', per_page: 10).photos.each do |photo|
                 )
 end
 
+client.photos.search('Portrait', per_page: 1).photos.each do |photo|
+    User.create(
+        username: "Carrot Dan",
+        password_digest: "123",
+        bio: "All about the carrots bruh !",
+        email: "CarrotDan@carrots.com",
+        phone_number: "555-555-5555",
+        avatar: photo.src.values[2]
+)
+end
+
 
 
 
