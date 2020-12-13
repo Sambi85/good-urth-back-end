@@ -18,12 +18,11 @@ Message.destroy_all
 User.destroy_all
 
 ### Markets w/ NYC API
-manhattan = Market.market_grabber("New York")
+# manhattan = Market.market_grabber("New York")
 # brookyn = Market.market_grabber("Kings")
 # queens = Market.market_grabber("Queens")
 # bronx = Market.market_grabber("Bronx")
-# statenIsland = Market.market_grabber("Richmond")
-# new_york = Market.market_grabber("New York")
+statenIsland = Market.market_grabber("Richmond")
 
 ### Farmers
 bio = ["Fresh Organic Produce","Our crops are the best, buy from us","Nothing like farm fresh, come try some of what we offer!",
@@ -33,7 +32,7 @@ bio = ["Fresh Organic Produce","Our crops are the best, buy from us","Nothing li
 
 days_of_the_week = ["monday","tuesday","wednesday","thursday","friday","saturday","sunday "]
 
-10.times do
+5.times do
     Farmer.create!(
         username: Faker::Name.name,
         password_digest: "123",
@@ -62,7 +61,7 @@ client.photos.search('tomatoes', per_page: 10).photos.each do |photo|
     tomatoes = Item.create!(
         farmer_id: Farmer.all.sample.id,
         name: "Heirloom Tomatoes",
-        price: "$5.99",
+        price: 5.99,
         purchase_unit: "/lb.",
         stock_amount: "50",
         item_pulled: false,
@@ -74,7 +73,7 @@ client.photos.search('corn', per_page: 10).photos.each do |photo|
     tomatoes = Item.create!(
         farmer_id: Farmer.all.sample.id,
         name: "Local Upstate Corn",
-        price: "$5.99",
+        price: 5.99,
         purchase_unit: "/lb.",
         stock_amount: "20",
         item_pulled: false,
@@ -86,7 +85,7 @@ client.photos.search('eggs', per_page: 10).photos.each do |photo|
     tomatoes = Item.create!(
         farmer_id: Farmer.all.sample.id,
         name: "Local Upstate Corn",
-        price: "$6.00",
+        price: 6.00,
         purchase_unit: "1/2 dozen",
         stock_amount: "20",
         item_pulled: false,
@@ -98,7 +97,7 @@ client.photos.search('butter', per_page: 10).photos.each do |photo|
     tomatoes = Item.create!(
         farmer_id: Farmer.all.sample.id,
         name: "Local Upstate Corn",
-        price: "$8.00",
+        price: 8.00,
         purchase_unit: "lb.",
         stock_amount: "20",
         item_pulled: false,
@@ -110,7 +109,7 @@ client.photos.search('rosemary', per_page: 10).photos.each do |photo|
     tomatoes = Item.create!(
         farmer_id: Farmer.all.sample.id,
         name: "Fresh-Cut Rosemary",
-        price: "$2.00",
+        price: 2.00,
         purchase_unit: "bch.",
         stock_amount: "20",
         item_pulled: false,
@@ -122,7 +121,7 @@ client.photos.search('Bread', per_page: 10).photos.each do |photo|
     tomatoes = Item.create!(
         farmer_id: Farmer.all.sample.id,
         name: "Fresh Baked Bread",
-        price: "$4.50",
+        price: 4.50,
         purchase_unit: "each",
         stock_amount: "20",
         item_pulled: false,
@@ -134,7 +133,7 @@ client.photos.search('Pies', per_page: 10).photos.each do |photo|
     tomatoes = Item.create!(
         farmer_id: Farmer.all.sample.id,
         name: "Assorted Pies",
-        price: "$6.50",
+        price: 6.50,
         purchase_unit: "each",
         stock_amount: "20",
         item_pulled: false,
@@ -148,12 +147,27 @@ client.photos.search('Portrait', per_page: 1).photos.each do |photo|
         password_digest: "123",
         bio: "All about the carrots bruh !",
         email: "CarrotDan@carrots.com",
-        phone_number: "555-555-5555",
-        avatar: photo.src.values[2]
+        phone_number: "2017976535",
+        avatar: photo.src.values[3]
 )
 end
 
+5.times do 
+     Order.create!(
+        user_id: User.all.sample.id,
+        total: (100.00 * 0.80 + 100.00).to_f ,
+        subtotal: 100.00 ,
+        tax: 100.00 * 0.8,
+        pick_up: true
+    )
+end
 
-
+5.times do 
+    ItemOrder.create!(
+        item_id: Item.all.sample.id,
+        order_id: Order.all.sample.id,
+        quantity: Faker::Number.between(from: 1, to: 5) 
+    )
+end
 
 
