@@ -1,5 +1,5 @@
 class OrderSerializer < ActiveModel::Serializer
-    attributes :user_id, :subtotal, :tax, :total, :pick_up
+    attributes :id, :user_id, :subtotal, :tax, :total, :pick_up
 
     has_many :itemOrders
 
