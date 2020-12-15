@@ -11,7 +11,7 @@ class ItemOrdersController < ApplicationController
     end
 
     def create
-        item_order = ItemOrder.create(order_params)
+        item_order = ItemOrder.create(item_order_params)
         render :json => item_order, serialzer: ItemOrderSerializer
     end
 
