@@ -23,7 +23,7 @@ class FarmersController < ApplicationController
 
     def destroy
         farmer = Farmer.find(params[:id])
-        farmer.destory
+        farmer.destroy
         render json:{}
     end
 

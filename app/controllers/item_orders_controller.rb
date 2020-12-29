@@ -16,14 +16,14 @@ class ItemOrdersController < ApplicationController
     end
 
     def update
-        item_order = ItemOrder.find(params[:id])
+        item_order = ItemOrder.update(item_order_params)
         item_order.update(item_order_params)
         render :json => item_order, serializer: ItemOrderSerializer
     end
 
     def destroy
         item_order = ItemOrder.find(params[:id])
-        item_order.destroy
+        item_order.destroy()
         render json:{}
     end
 

@@ -50,9 +50,9 @@ days_of_the_week = ["monday","tuesday","wednesday","thursday","friday","saturday
 end
 
 ### Schedule
-5.times do 
+131.times do 
     Schedule.create!(
-        market_id: Market.all.sample.id,
+        market_id: Market.all.uniq.sample.id,
         farmer_id: Farmer.all.sample.id,
         days_of_the_week: "monday, wednesday, friday"
         )
@@ -145,11 +145,22 @@ end
 
 client.photos.search('Portrait', per_page: 1).photos.each do |photo|
     User.create(
-        username: "Carrot Dan",
+        username: "Tobi Flenderson",
         password_digest: "123",
-        bio: "All about the carrots bruh !",
-        email: "CarrotDan@carrots.com",
-        phone_number: "2017976535",
+        bio: "Ever since I was divorced, I've really been into local sourced produce",
+        email: "tobi@hr_dundermifflen.com",
+        phone_number: "1234567890",
+        avatar: photo.src.values[3]
+        )
+end
+
+client.photos.search('Portrait', per_page: 1).photos.each do |photo|
+    User.create(
+        username: "Michael Gary Scott",
+        password_digest: "123",
+        bio: "I'm the best boss, because people like me !",
+        email: "MikeyScottYo@yahoo.com",
+        phone_number: "1234567890",
         avatar: photo.src.values[3]
         )
 end
