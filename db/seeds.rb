@@ -179,7 +179,8 @@ end
     ItemOrder.create!(
         item_id: Item.all.sample.id,
         order_id: Order.all.sample.id,
-        quantity: Faker::Number.between(from: 1, to: 5) 
+        quantity: Faker::Number.between(from: 1, to: 5),
+        paid: false
     )
 end
 
