@@ -19,11 +19,10 @@ User.destroy_all
 
 ### Markets w/ NYC API
 manhattan = Market.market_grabber("New York")
-# brookyn = Market.market_grabber("Kings")
-# queens = Market.market_grabber("Queens")
-# bronx = Market.market_grabber("Bronx")
-# statenIsland = Market.market_grabber("Richmond")
-# new_york = Market.market_grabber("New York")
+brookyn = Market.market_grabber("Kings")
+queens = Market.market_grabber("Queens")
+bronx = Market.market_grabber("Bronx")
+statenIsland = Market.market_grabber("Richmond")
 
 ### Farmers
 bio = ["Fresh Organic Produce","Our crops are the best, buy from us","Nothing like farm fresh, come try some of what we offer!",
@@ -33,6 +32,8 @@ bio = ["Fresh Organic Produce","Our crops are the best, buy from us","Nothing li
 
 days_of_the_week = ["monday","tuesday","wednesday","thursday","friday","saturday","sunday "]
 
+
+### Note: phone number is a string data type
 10.times do
     Farmer.create!(
         username: Faker::Name.name,
@@ -40,29 +41,29 @@ days_of_the_week = ["monday","tuesday","wednesday","thursday","friday","saturday
         bio: "yum",
         address: Faker::Address.street_address,
         email: Faker::Internet.free_email,
-        phone_number: Faker::PhoneNumber.area_code,
+        phone_number: Faker::PhoneNumber.cell_phone,
         open: "8:00am",
         close:"5:00pm", 
         days_open: "mondays thru fridays",
         is_open: Faker::Boolean.boolean(true_ratio: 0.75)
         )
-    end
+end
 
 ### Schedule
-5.times do 
+131.times do 
     Schedule.create!(
-        market_id: Market.all.sample.id,
+        market_id: Market.all.uniq.sample.id,
         farmer_id: Farmer.all.sample.id,
         days_of_the_week: "monday, wednesday, friday"
-    )
+        )
 end
 
 ### Items
 client.photos.search('tomatoes', per_page: 10).photos.each do |photo|
-    tomatoes = Item.create!(
+    Item.create!(
         farmer_id: Farmer.all.sample.id,
         name: "Heirloom Tomatoes",
-        price: "$5.99",
+        price: 5.99,
         purchase_unit: "/lb.",
         stock_amount: "50",
         item_pulled: false,
@@ -71,10 +72,10 @@ client.photos.search('tomatoes', per_page: 10).photos.each do |photo|
 end
 
 client.photos.search('corn', per_page: 10).photos.each do |photo|
-    tomatoes = Item.create!(
+    Item.create!(
         farmer_id: Farmer.all.sample.id,
         name: "Local Upstate Corn",
-        price: "$5.99",
+        price: 5.99,
         purchase_unit: "/lb.",
         stock_amount: "20",
         item_pulled: false,
@@ -83,10 +84,10 @@ client.photos.search('corn', per_page: 10).photos.each do |photo|
 end
 
 client.photos.search('eggs', per_page: 10).photos.each do |photo|
-    tomatoes = Item.create!(
+    Item.create!(
         farmer_id: Farmer.all.sample.id,
         name: "Local Upstate Corn",
-        price: "$6.00",
+        price: 6.00,
         purchase_unit: "1/2 dozen",
         stock_amount: "20",
         item_pulled: false,
@@ -95,10 +96,10 @@ client.photos.search('eggs', per_page: 10).photos.each do |photo|
 end
 
 client.photos.search('butter', per_page: 10).photos.each do |photo|
-    tomatoes = Item.create!(
+    Item.create!(
         farmer_id: Farmer.all.sample.id,
         name: "Local Upstate Corn",
-        price: "$8.00",
+        price: 8.00,
         purchase_unit: "lb.",
         stock_amount: "20",
         item_pulled: false,
@@ -106,43 +107,81 @@ client.photos.search('butter', per_page: 10).photos.each do |photo|
         )
 end
 
-client.photos.search('rosemary', per_page: 10).photos.each do |photo|
-    tomatoes = Item.create!(
+client.photos.search('Thyme', per_page: 10).photos.each do |photo|
+    Item.create!(
         farmer_id: Farmer.all.sample.id,
-        name: "Fresh-Cut Rosemary",
-        price: "$2.00",
+        name: "Fresh-Cut Thyme",
+        price: 2.00,
         purchase_unit: "bch.",
         stock_amount: "20",
         item_pulled: false,
         url: photo.src.values[2]
-                ) 
+        ) 
 end
 
 client.photos.search('Bread', per_page: 10).photos.each do |photo|
-    tomatoes = Item.create!(
+    Item.create!(
         farmer_id: Farmer.all.sample.id,
         name: "Fresh Baked Bread",
-        price: "$4.50",
+        price: 4.50,
         purchase_unit: "each",
         stock_amount: "20",
         item_pulled: false,
         url: photo.src.values[2]
-                )
+        )
 end
 
 client.photos.search('Pies', per_page: 10).photos.each do |photo|
-    tomatoes = Item.create!(
+    Item.create!(
         farmer_id: Farmer.all.sample.id,
         name: "Assorted Pies",
-        price: "$6.50",
+        price: 6.50,
         purchase_unit: "each",
         stock_amount: "20",
         item_pulled: false,
         url: photo.src.values[2]
-                )
+        )
 end
 
+client.photos.search('Portrait', per_page: 1).photos.each do |photo|
+    User.create(
+        username: "Tobi Flenderson",
+        password_digest: "123",
+        bio: "Ever since I was divorced, I've really been into local sourced produce",
+        email: "tobi@hr_dundermifflen.com",
+        phone_number: "1234567890",
+        avatar: photo.src.values[3]
+        )
+end
 
+client.photos.search('Portrait', per_page: 1).photos.each do |photo|
+    User.create(
+        username: "Michael Gary Scott",
+        password_digest: "123",
+        bio: "I'm the best boss, because people like me !",
+        email: "MikeyScottYo@yahoo.com",
+        phone_number: "1234567890",
+        avatar: photo.src.values[3]
+        )
+end
 
+10.times do 
+     Order.create!(
+        user_id: User.all.sample.id,
+        total: (100.00 * 0.80 + 100.00).to_f ,
+        subtotal: 100.00 ,
+        tax: 100.00 * 0.8,
+        pick_up: true
+    )
+end
+
+10.times do 
+    ItemOrder.create!(
+        item_id: Item.all.sample.id,
+        order_id: Order.all.sample.id,
+        quantity: Faker::Number.between(from: 1, to: 5),
+        paid: false
+    )
+end
 
 

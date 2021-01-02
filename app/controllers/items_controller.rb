@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
 
     def create 
         item = Item.find(params[:id])
-        render :json => item
+        render :json => item, serializer: ItemSerializer
     end
 
     def update

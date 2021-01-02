@@ -1,23 +1,23 @@
 class ReviewsController < ApplicationController
     def index
         reviews = Review.all
-        render :json => reviews, each_serializer: ReviewController 
+        render :json => reviews, each_serializer: ReviewSerializer
     end
 
     def show
         review = Review.find(params[:id])
-        render :json => review, serializer: ReviewController
+        render :json => review, serializer: ReviewSerializer
     end
 
     def create
         review = Review.create(review_params)
-        render :json => review
+        render :json => review, serializer: ReviewSerializer
     end
 
     def update
         review = Review.find(params[:id])
         review.update(review_params)
-        render :json => review, serializer: ReviewController
+        render :json => review, serializer: ReviewSerializer
     end
 
     def destroy

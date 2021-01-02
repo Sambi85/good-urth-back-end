@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
 
 has_many :itemOrders
-has_many :Orders, through: :itemOrders
+has_many :orders, through: :itemOrders
 
 belongs_to :farmer
 

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
     def index
         users = User.all
-        render :json => users, each_serializer: UserSerializer
+        render :json => users, each_serializer: UserSerializer  
     end
 
     def show 
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
     def create 
         user = User.create(user_name)
-        render :json => user
+        render :json => user, serialzer: UserSerializer
     end
     
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_08_223608) do
+ActiveRecord::Schema.define(version: 2021_01_02_221516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,13 +21,13 @@ ActiveRecord::Schema.define(version: 2020_11_08_223608) do
     t.string "bio"
     t.string "address"
     t.string "email"
-    t.integer "phone_number"
     t.time "open"
     t.time "close"
     t.string "days_open"
     t.boolean "is_open"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "phone_number"
   end
 
   create_table "item_orders", force: :cascade do |t|
@@ -36,18 +36,19 @@ ActiveRecord::Schema.define(version: 2020_11_08_223608) do
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "paid"
   end
 
   create_table "items", force: :cascade do |t|
     t.integer "farmer_id"
     t.string "name"
-    t.float "price"
     t.string "purchase_unit"
     t.float "stock_amount"
     t.boolean "item_pulled"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "url"
+    t.decimal "price", precision: 8, scale: 2
   end
 
   create_table "markets", force: :cascade do |t|
@@ -67,7 +68,7 @@ ActiveRecord::Schema.define(version: 2020_11_08_223608) do
     t.string "snap_status"
     t.string "zip"
     t.string "operation_months_code"
-    t.string "phone"
+    t.string "phone_number"
   end
 
   create_table "messages", force: :cascade do |t|
