@@ -50,10 +50,10 @@ days_of_the_week = ["monday","tuesday","wednesday","thursday","friday","saturday
 end
 
 ### Schedule
-131.times do 
+262.times do 
     Schedule.create!(
         market_id: Market.all.uniq.sample.id,
-        farmer_id: Farmer.all.sample.id,
+        farmer_id: Farmer.all.uniq.sample.id,
         days_of_the_week: "monday, wednesday, friday"
         )
 end
@@ -180,7 +180,8 @@ end
         item_id: Item.all.sample.id,
         order_id: Order.all.sample.id,
         quantity: Faker::Number.between(from: 1, to: 5),
-        paid: false
+        paid: false,
+        date_purchased: ''
     )
 end
 
