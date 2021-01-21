@@ -1,4 +1,4 @@
-class FarmerSerializer < ActiveModel::Serializer
+class GroupSerializer < ActiveModel::Serializer
     attributes :id
     
     has_many :itemOrders
