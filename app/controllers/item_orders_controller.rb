@@ -30,6 +30,6 @@ class ItemOrdersController < ApplicationController
     private
 
     def item_order_params
-        params.require(:item_order).permit(:item_id, :order_id, :quantity, :paid, :date_purchased)
+        params.require(:item_order).permit(:item_id, :order_id, :quantity, :paid, :date_purchased, :created_at, :updated_at, :group_id)
     end
 end
