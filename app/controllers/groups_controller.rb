@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
     end
 
     def create
-        group = Group.create(group_params)
+        group = Group.create()
         render :json => group, serialzer: GroupSerializer
     end
 
@@ -30,6 +30,6 @@ class GroupsController < ApplicationController
     private
 
     def group_params
-        params.require(:group).permit(:id)
+        params.require(:group).permit(:created_at, :updated_at)
     end
 end
