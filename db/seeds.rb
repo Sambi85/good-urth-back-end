@@ -5,6 +5,8 @@ require 'pexels'
 Dotenv.load
 client = Pexels::Client.new(ENV['PEXELS_API_KEY'])
 
+# Group.destroy_all
+
 Market.destroy_all
 Farmer.destroy_all
 Schedule.destroy_all
@@ -32,6 +34,7 @@ bio = ["Fresh Organic Produce","Our crops are the best, buy from us","Nothing li
 
 days_of_the_week = ["monday","tuesday","wednesday","thursday","friday","saturday","sunday "]
 
+# group1 = Group.create!()
 
 ### Note: phone number is a string data type
 10.times do
@@ -180,9 +183,9 @@ end
         item_id: Item.all.sample.id,
         order_id: Order.all.sample.id,
         quantity: Faker::Number.between(from: 1, to: 5),
-        paid: false,
-        date_purchased: ''
+        group_id: 0
     )
+
 end
 
 

@@ -16,7 +16,7 @@ class GroupsController < ApplicationController
     end
 
     def update
-        group = Group.update(group_params)
+        group = Group.find(params[:id])
         group.update(group_params)
         render :json => group, serializer: GroupSerializer
     end
