@@ -14,10 +14,15 @@ API:
 1. DOHMH Farmers Markets/ SODA API  (for Greenmarkets in NYC)
 
 Gems:
-- pry
-- byebug
 - dotenv
-- httparty (backend fetch requests) 
+- httparty (backend fetch requests)
+- rack-cors
+- dotenv-rails
+- active_model_serializers, ~> 0.10.10
+- byebug (debugging)
+- pry (debugging)
+- faker (testing)
+- pexels (sample data)
 
 Models:
 1. User
@@ -30,8 +35,6 @@ Models:
 8. Tent
 9. Market
 
-User Stories:
-
 Notes:
-- Built this project to explore Redux, I wanted to try out it's ability to manage state and fetch requests.
+- Built this project to explore Redux/thunk + managing Global state
 
