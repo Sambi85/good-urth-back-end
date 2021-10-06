@@ -4,12 +4,11 @@ Name: Good Urth
 
 Concept: Direct Farmer's Market to Costumer Food App
 Author: Sam Lesser
-Special Thanks: Alex Beciana, Michael Horowitz
+Special Thanks: Alex Beciana & Michael Horowitz
 
 Tech:
 1. Ruby on Rails
 2. PostgreSQL 
-3. 
 
 API:
 1. DOHMH Farmers Markets/ SODA API  (for Greenmarkets in NYC)
